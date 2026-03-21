@@ -38,10 +38,3 @@ Diagnostic confirms a **severed communication on the data bus (SMBus/I2C)** betw
 
 *Documented by mcdesmonteix \- 2026*
 
-* **Le contenu :** Ton texte ou tes commandes.
-* **La fermeture :** Toujours trois ` ``` ` seuls sur une ligne. **Si tu oublies de fermer, tout le reste de ton document sera gris !**
-
-
-
-### 📌 Prochaine étape
-Maintenant que ton `README.md` est magnifique et que tu sais créer des blocs de code, **souhaites-tu que je t'apprenne à ajouter des images ou des captures d'écran directement dans ton rapport GitHub pour le rendre encore plus visuel ?**
