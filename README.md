@@ -24,6 +24,7 @@ Executed to identify hardware-level sensor failures.
 Used to understand the random reboots caused by ferromagnetic dust:
 ```bash
 pmset -g log | grep -e "Wake" -e "DarkWake
+```
 
 Observation: Multiple spontaneous wake events linked to the MagSafe rail instability.
 
