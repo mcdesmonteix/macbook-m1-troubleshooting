@@ -6,12 +6,13 @@
 
 ### **🔍 Technical Investigation**
 
-| Diagnostic Step | Tool / Command | Observation |
-| :---- | :---- | :---- |
-| **Battery Health** | pmset \-g batt | 1%; not charging |
-| **RTC Clock** | System Time | Reset to **April 1st, 2021** (00:00) |
-| **Data Bus** | ioreg -rw0 -c AppleSmartBattery | Communication broken on the SMBus (Voltage=0, Cycle=0) |
-|  |grep -i "Voltage\|CycleCount\|IsCharging" |  |
+| Diagnostic Step | Command | Goal | Result |
+| :--- | :--- | :--- | :--- |
+| **RTC Clock** | `sudo sntp -sS time.apple.com` | Fix 01/04/2021 RTC bug | **Success**: Restored SSL/Web access |
+| **Battery Health** | `pmset -g batt` | Check battery status | `1% - Not charging` |
+|  | `sudo pkill powerd` | Reset power daemon | No change (Hardware issue confirmed) |
+|  | `sudo nvram AutoBoot=%00` | Disable auto-power on | **Success**: Stabilized ghost signals |
+| **Data Bus** | `ioreg -rw0 -c AppleSmartBattery` | Query SMBus registers | **Critical**: Revealed `Voltage=0,  Cycle=0` |
 
 ### **🛠️ Software-Side Recovery & Stabilization**
 
