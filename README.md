@@ -12,7 +12,7 @@
 | **Battery Health** | `pmset -g batt` | Check battery status | `1% - Not charging` |
 |  | `sudo pkill powerd` | Reset power daemon | No change (Hardware issue confirmed) |
 |  | `sudo nvram AutoBoot=%00` | Disable auto-power on | **Success**: Stabilized ghost signals |
-| **Data Bus** | `ioreg -rw0 -c AppleSmartBattery` | Query SMBus registers | **Critical**: Revealed `Voltage=0,  Cycle=0` |
+| **Data Bus** | `ioreg -rw0 -c AppleSmartBattery` | Query SMBus registers | **Critical**: Revealed  `Voltage=0,  Cycle=0` |
 
 ### **🛠️ Software-Side Recovery & Stabilization**
 
