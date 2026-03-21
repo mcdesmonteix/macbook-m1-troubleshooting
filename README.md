@@ -1,10 +1,10 @@
 
-## **📋 Case Study: MacBook Pro 14" (M1 Pro)
+## 📋 Case Study: MacBook Pro 14" (M1 Pro)
 **Summary:** Critical power failure following environmental exposure to volcanic magnetite (Mont Batur) and liquid ingress.
 
 ---
 
-### **🔍 Technical Investigation
+### 🔍 Technical Investigation
 | Diagnostic Step | Command | Goal | Result |
 | :--- | :--- | :--- | :--- |
 | **RTC Clock** | `sudo sntp -sS time.apple.com` | Fix 01/04/2021 RTC bug | **Success**: Restored SSL/Web access |
@@ -15,7 +15,7 @@
 
 ---
 
-### **🧪 Diagnostic & Testing Protocol
+### 🧪 Diagnostic & Testing Protocol
 #### Step A: Apple Diagnostics (Hardware)
 Executed to identify hardware-level sensor failures.
 * **Result:** Error code **PPP007** detected, confirming a power input/adapter communication failure.
@@ -40,7 +40,7 @@ Since volcanic sand is ferromagnetic, it created electrical arcing within the Ma
 - sudo nvram AutoBoot=%00
 ```
 
-### **📉 Final Verdict & Recovery Plan
+### 📉 Final Verdict & Recovery Plan
 Diagnostic confirms a **severed communication on the data bus (SMBus/I2C)** between the Battery Management System (BMS) and the Power Management Unit (PMU).
 
 * \[ \] **Step 1:** Ultrasonic de-oxidation (Logic Board & MagSafe port).  
