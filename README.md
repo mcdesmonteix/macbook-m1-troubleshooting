@@ -1,4 +1,4 @@
-
+![Status](https://img.shields.io/badge/Status-Sent%20for%20Repair-orange) ![Tool](https://img.shields.io/badge/Tools-Terminal%20%7C%20Micro--soldering-blue)
 ## 📋 Case Study: MacBook Pro 14" (M1 Pro)
 **Summary:** Critical power failure following environmental exposure to volcanic magnetite (Mont Batur) and liquid ingress.
 
