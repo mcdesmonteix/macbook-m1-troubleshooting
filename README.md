@@ -2,7 +2,7 @@
 
 ## **📋 Case Study: MacBook Pro 14" (M1 Pro)**
 
-**Summary:** Critical power failure following environmental exposure to volcanic magnetite (Batur) and liquid ingress.
+**Summary:** Critical power failure following environmental exposure to volcanic magnetite (Mont Batur) and liquid ingress.
 
 ### **🔍 Technical Investigation**
 
@@ -20,13 +20,13 @@ Prior to hardware intervention, the following commands were executed to stabiliz
 
 The RTC reset prevented any access to secure websites (HTTPS). Forced synchronization restored full connectivity:
 
-sudo sntp \-sS time.apple.com
+`sudo sntp \-sS time.apple.com`
 
 #### **2\. Stabilization of parasitic signals**
 
 Since volcanic sand is ferromagnetic, it created electrical arcing within the MagSafe port, causing random reboots. This command disabled the automatic power-on to stabilize the logic board:
 
-\- sudo nvram AutoBoot=%00
+`sudo nvram AutoBoot=%00`
 
 ### **📉 Final Verdict & Recovery Plan**
 
