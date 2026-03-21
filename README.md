@@ -30,15 +30,15 @@ Observation: Multiple spontaneous wake events linked to the MagSafe rail instabi
 
 ---
 
-### **🛠️ Software-Side Recovery & Stabilization
+### 🛠️ Software-Side Recovery & Stabilization
 1. Resync of the clock for SSL access
 The RTC reset prevented any access to secure websites (HTTPS). Forced synchronization restored full connectivity.
 
 2. Stabilization of parasitic signals
 Since volcanic sand is ferromagnetic, it created electrical arcing within the MagSafe port. This command disabled the automatic power-on to stabilize the logic board:
 
-```Diff
-- sudo nvram AutoBoot=%00
+```bash
+sudo nvram AutoBoot=%00
 ```
 
 ### 📉 Final Verdict & Recovery Plan
