@@ -1,37 +1,46 @@
-# **🛠 Hardware Repair Portfolio**
 
-## **📋 Case Study: MacBook Pro 14" (M1 Pro)**
-
+## **📋 Case Study: MacBook Pro 14" (M1 Pro)
 **Summary:** Critical power failure following environmental exposure to volcanic magnetite (Mont Batur) and liquid ingress.
 
-### **🔍 Technical Investigation**
+---
 
+### **🔍 Technical Investigation
 | Diagnostic Step | Command | Goal | Result |
 | :--- | :--- | :--- | :--- |
 | **RTC Clock** | `sudo sntp -sS time.apple.com` | Fix 01/04/2021 RTC bug | **Success**: Restored SSL/Web access |
 | **Battery Health** | `pmset -g batt` | Check battery status | `1% - Not charging` |
-|  | `sudo pkill powerd` | Reset power daemon | No change (Hardware issue confirmed) |
-|  | `sudo nvram AutoBoot=%00` | Disable auto-power on | **Success**: Stabilized ghost signals |
-| **Data Bus** | `ioreg -rw0 -c AppleSmartBattery` | Query SMBus registers | **Critical**: Revealed  `Voltage=0`,  `Cycle=0`, `Serial = ""`. |
+| | `sudo pkill powerd` | Reset power daemon | No change (Hardware issue confirmed) |
+| | `sudo nvram AutoBoot=%00` | Disable auto-power on | **Success**: Stabilized ghost signals |
+| **Data Bus** | `ioreg -rw0 -c AppleSmartBattery` | Query SMBus registers | **Critical**: `Voltage=0`, `Cycle=0`, `Serial=""` |
 
-### **🛠️ Software-Side Recovery & Stabilization**
+---
 
-Prior to hardware intervention, the following commands were executed to stabilize the system and restore vital functions:
+### **🧪 Diagnostic & Testing Protocol
+#### Step A: Apple Diagnostics (Hardware)
+Executed to identify hardware-level sensor failures.
+* **Result:** Error code **PPP007** detected, confirming a power input/adapter communication failure.
 
-#### **1\. Resync of the clock for SSL access**
+#### Step B: Wake Cause Analysis
+Used to understand the random reboots caused by ferromagnetic dust:
+```bash
+pmset -g log | grep -e "Wake" -e "DarkWake
 
-The RTC reset prevented any access to secure websites (HTTPS). Forced synchronization restored full connectivity:
+Observation: Multiple spontaneous wake events linked to the MagSafe rail instability.
 
-`sudo sntp \-sS time.apple.com`
+---
 
-#### **2\. Stabilization of parasitic signals**
+### **🛠️ Software-Side Recovery & Stabilization
+1. Resync of the clock for SSL access
+The RTC reset prevented any access to secure websites (HTTPS). Forced synchronization restored full connectivity.
 
-Since volcanic sand is ferromagnetic, it created electrical arcing within the MagSafe port, causing random reboots. This command disabled the automatic power-on to stabilize the logic board:
+2. Stabilization of parasitic signals
+Since volcanic sand is ferromagnetic, it created electrical arcing within the MagSafe port. This command disabled the automatic power-on to stabilize the logic board:
 
-`sudo nvram AutoBoot=%00`
+```Diff
+- sudo nvram AutoBoot=%00
+```
 
-### **📉 Final Verdict & Recovery Plan**
-
+### **📉 Final Verdict & Recovery Plan
 Diagnostic confirms a **severed communication on the data bus (SMBus/I2C)** between the Battery Management System (BMS) and the Power Management Unit (PMU).
 
 * \[ \] **Step 1:** Ultrasonic de-oxidation (Logic Board & MagSafe port).  
@@ -41,4 +50,3 @@ Diagnostic confirms a **severed communication on the data bus (SMBus/I2C)** betw
 **Current status:** Sent for micro-soldering repair (Estimated cost: ~300€).
 
 *Documented by mcdesmonteix \- 2026*
-
