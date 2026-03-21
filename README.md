@@ -50,4 +50,12 @@ Diagnostic confirms a **severed communication on the data bus (SMBus/I2C)** betw
 
 **Current status:** Sent for micro-soldering repair (Estimated cost: ~300€).
 
+### 🔒 Security & Privacy Preparation
+Before shipping the device for micro-soldering, the following security measures were taken:
+- [x] **Technical Brief:** Sent via email to the technician.
+- [x] **Backup:** Full cloud synchronization completed.
+- [x] **iCloud:** Logged out & "Find My" disabled.
+- [x] **Privacy:** Guest/Test session created.
+- [x] **Physical Safety:** Device cleaned and protected for shipping.
+
 *Documented by mcdesmonteix \- 2026*
