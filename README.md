@@ -12,7 +12,7 @@
 | **Battery Health** | `pmset -g batt` | Check battery status | `1% - Not charging` |
 |  | `sudo pkill powerd` | Reset power daemon | No change (Hardware issue confirmed) |
 |  | `sudo nvram AutoBoot=%00` | Disable auto-power on | **Success**: Stabilized ghost signals |
-| **Data Bus** | `ioreg -rw0 -c AppleSmartBattery` | Query SMBus registers | **Critical**: Revealed  `Voltage=0,  Cycle=0` |
+| **Data Bus** | `ioreg -rw0 -c AppleSmartBattery` | Query SMBus registers | **Critical**: Revealed  `Voltage=0`,  `Cycle=0`, `Serial = ""`. |
 
 ### **🛠️ Software-Side Recovery & Stabilization**
 
@@ -37,6 +37,8 @@ Diagnostic confirms a **severed communication on the data bus (SMBus/I2C)** betw
 * \[ \] **Step 1:** Ultrasonic de-oxidation (Logic Board & MagSafe port).  
 * \[ \] **Step 2:** Micro-soldering of the SMBus/I2C data traces.  
 * \[ \] **Step 3:** Post-repair stress test (10 charging cycles).
+
+**Current status:** Sent for micro-soldering repair (Estimated cost: ~300€).
 
 *Documented by mcdesmonteix \- 2026*
 
