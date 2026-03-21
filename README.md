@@ -10,7 +10,7 @@
 | :---- | :---- | :---- |
 | **Battery Health** | pmset \-g batt | 1%; not charging |
 | **RTC Clock** | System Time | Reset to **April 1st, 2021** (00:00) |
-| **Data Bus** | ioreg | Voltage: 0V / CycleCount: 0 |
+| **Data Bus** | ioreg -rw0 -c AppleSmartBattery | grep -i "Voltage\|CycleCount\|IsCharging" | Communication broken on the SMBus (Voltage=0, Cycle=0) |
 
 ### **🛠️ Software-Side Recovery & Stabilization**
 
